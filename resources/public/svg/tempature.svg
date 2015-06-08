@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="100.4 -20 240 540" enable-background="new 100.4 -20 240 540" xml:space="preserve">
+<g>
+	<g id="Layer_2">
+		<path d="M270,313.5V50c0-27.6-22.3-50-49.9-50s-49.9,22.4-49.9,50H170v264c-29.6,17.3-49.5,49.5-49.5,86.3
+			c0,55.2,44.7,99.9,99.9,99.9s99.9-44.7,99.9-99.9C320.3,363.1,300.1,330.7,270,313.5z M220.4,490.1c-49.6,0-89.9-40.3-89.9-89.9
+			c0-31.8,17.1-61.5,44.5-77.6l4.9-2.9V60V50c0-22.1,18-40,40-40s40,17.9,40,40v269.3l5,2.9c27.9,16,45.3,45.9,45.3,78.1
+			C310.3,449.8,270,490.1,220.4,490.1z"/>
+	</g>
+	<g id="Layer_1_1_">
+		<ellipse id="bulb" cx="220.4" cy="401.1" rx="74.9" ry="75.1"/>
+		<circle id="temperature-top" cx="220" cy="330.7" r="25"/>
+		<rect id="temperature-mid" x="195" y="330.7" width="50" height="10.3"/>
+	</g>
+</g>
+</svg>

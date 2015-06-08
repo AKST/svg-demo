@@ -1,0 +1,81 @@
+
+body, html {
+  margin: 0;
+}
+
+$text-color: white;
+$height: 400px;
+$width: 600px;
+
+.background {
+  transition: ease-in-out 0.5s background;
+
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+
+  height: 100vh;
+  width: 100vw;
+  margin: auto;
+
+  display: block;
+  content: ' ';
+  position: fixed;
+  box-sizing: border-box;
+  //background-color: #f15a68;
+
+  z-index: -1;
+}
+
+.hud {
+
+  $border-offset: $height / 10;
+
+  font-family: Lato, sans-serif;
+  min-margin-left: $border-offset;
+  min-margin-right: $border-offset;
+  height: $height;
+  max-width: $width;
+
+  /**
+   * Horizontal & Vertical centering
+   */
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+
+  p {
+    padding-top: 20px;
+    font-size: 64px;
+    font-weight: 900;
+    font-style: italic;
+    color: $text-color;
+  }
+
+  .value {
+    font-weight: 100;
+    //font-style: italic;
+    font-style: normal;
+    font-size: 160px;
+  }
+}
+
+.temperature-svg {
+  position: absolute;
+  margin-top: $height * 0.1; 
+  top: 0;
+  right: 0;
+  height: $height * 0.8;
+}
+
+.hud {
+  circle, rect {
+    transition: ease-in-out 0.5s all;
+  }
+  svg * {
+    fill: $text-color;
+  }
+}
+
+
