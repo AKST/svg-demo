@@ -15,7 +15,10 @@
 
 ;; Num -> String
 (defn- to-hex-channel [number]
-  (let [trimmed (mod number 255)]
+  (let [trimmed (cond
+                  (< number 0)  0
+                  (> number 255) 255
+                  :else number)]
     (if (>= trimmed 16)
       (.toString trimmed 16)
       (str \0 trimmed))))
