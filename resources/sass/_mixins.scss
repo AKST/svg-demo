@@ -1,0 +1,10 @@
+@mixin center($height, $width) {
+  height: $height;
+  max-width: $width;
+
+  /**
+   * Horizontal & Vertical centering
+   */
+  margin: calc((100vh - #{$height}) / 2) calc((100vw - #{$width}) / 2);
+
+}

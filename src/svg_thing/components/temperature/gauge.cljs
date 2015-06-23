@@ -1,4 +1,4 @@
-(ns svg-thing.component.gauge
+(ns svg-thing.component.temperature.gauge
   (:require [svg-thing.http :as http]
             [svg-thing.math :as math]
             [svg-thing.colour :as colour]
@@ -12,9 +12,7 @@
 ;; TODO make part of the prop interface
 (def ^{:private true} consts
   { :svg-pt { :range { :min 330.7
-                       :max 50 }}
-    :colour { :cold "#3472d4"
-              :hot  "#f15a68" }})
+                       :max 50 }}})
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -24,7 +22,7 @@
 ;; @props
 ;;    :svg-url url to the svg temp-o-stat
 ;;    :range { :min NUMBER :max NUMBER }
-;;    :temp NUMBER
+;;    :current NUMBER
 
 
 
@@ -38,37 +36,20 @@
     (dommy/append! (reagent/dom-node this) svg))))
 
 
-(defn- colour-curve [this]
-  "The colour curve for the background"
-  (let [temp-range ((reagent/props this) :range)
-        s-temp (temp-range :min)
-        l-temp (temp-range :max)
-        m-temp (/ (- l-temp s-temp) 2)]
-    (colour/colour-curve
-      [{ :value s-temp :colour [81  89 214] }
-       { :value m-temp :colour [194 96 162] }
-       { :value l-temp :colour [241 90 104] }])))
-
-
 (defn- adjust-graphic [this]
   "Moves svg components to represent the temperature"
   (let [dom (reagent/dom-node this)
         dot (sel1 dom :#temperature-top)
         bar (sel1 dom :#temperature-mid)
-        bg  (sel1 :.background)
 
-        temperature ((reagent/props this) :temp)
+        temperature ((reagent/props this) :current)
         y-position (math/plot-range ((reagent/props this) :range) ((consts :svg-pt) :range))
-        bar-height (- (get-in consts [:svg-pt :range :min]) (y-position temperature))
-        bg-colour ((colour-curve this) temperature)]
+        ;; height cannot go below zero
+        bar-height (max 0 (- (get-in consts [:svg-pt :range :min]) (y-position temperature)))]
 
     (dommy/set-attr! dot :cy (y-position temperature))
     (dommy/set-attr! bar :y (y-position temperature))
-    (dommy/set-attr! bar :height bar-height)
-    ;;
-    ;; todo refactor bg into it's own component
-    ;;
-    (dommy/set-style! bg :background-color bg-colour)))
+    (dommy/set-attr! bar :height bar-height)))
 
 
 (defn on-load [this]
@@ -78,11 +59,10 @@
 
 (defn- render [this]
   [:div.temperature-wrapper (merge this
-    { :temp 25
-      :range { :min 10 :max 60 }})])
+    { :current 25 :range { :min 10 :max 60 }})])
 
 
-(def temperature
+(def gauge
   (reagent/create-class
     { :component-did-mount on-load
       :component-did-update adjust-graphic

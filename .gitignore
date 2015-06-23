@@ -1,5 +1,6 @@
 /resources/public/css
 /resources/public/js/compiled/**
+.sass-cache
 figwheel_server.log
 pom.xml
 *jar

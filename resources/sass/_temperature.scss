@@ -1,0 +1,74 @@
+
+.temp-page {
+  $-temp-height: 400px;
+  $-temp-width: 600px;
+
+  @include center($-temp-height, $-temp-width);
+
+  position: relative;
+  color: $text-color;
+
+  svg * {
+    fill: $text-color;
+  }
+  circle, rect {
+    transition: ease-in-out $animation-time all;
+  }
+
+  /**
+   * contains temperature value and label saying temperature
+   */
+  .temp-hud {
+    font-family: Lato, sans-serif;
+    top: $-temp-height * 0.05;
+    position: absolute;
+    height: $-temp-height;
+    width: $-temp-width - 200;
+    display: inline-block;
+
+    $line-height: 1.2;
+    $heading-font-size: 70px;
+    $value-font-size: 130px;
+    $vertical-spacing: $-temp-height * 0.2;
+
+    $heading-occupied-height: floor($line-height * $heading-font-size) + $vertical-spacing;
+    $value-occupied-height: floor($line-height * $value-font-size) + $vertical-spacing;
+
+    .temp-heading {
+      line-height: $line-height;
+      font-size: $heading-font-size;
+      font-weight: 900;
+      font-style: italic;
+      color: $text-color;
+      width: 100%;
+      margin-bottom: ($vertical-spacing / 3) * 2;
+      margin-top: $vertical-spacing / 3;
+      display: block;
+      text-align: center;
+    }
+
+    .temp-value {
+      font-weight: 100;
+      font-style: normal;
+      line-height: $line-height;
+      font-size: $value-font-size;
+      margin-top: $-temp-height - ($heading-occupied-height + $value-occupied-height);
+      color: $text-color;
+      display: block;
+      text-align: center;
+    }
+  }
+
+  .temperature-wrapper {
+    position: absolute;
+    display: inline-block;
+    right: 0;
+  }
+
+  .temperature-svg {
+    $vertical-offset: 0.03;
+    margin: ($-temp-height * $vertical-offset) 0;
+    bottom: 1;
+    height: $-temp-height * (1 - ($vertical-offset * 2));
+  }
+}
