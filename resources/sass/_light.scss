@@ -3,7 +3,7 @@
   $height: 600px;
   @include center($width, $height);
 
-  $title-size: $height / 12;
+  $title-size: 0; //$height / 12;
 
   .light-title {
     font-family: $font-family;
@@ -24,10 +24,11 @@
   }
 
   .light-svg {
+    height: inherit;
+    width: inherit;
     margin: 0 auto;
     display: block;
-    height: $svg-dim;
-    width: $svg-dim;
+    animation: rotate (60s * 8) infinite linear;
   }
 
   .light-svg circle {
@@ -43,4 +44,25 @@
   #SW-circle { fill: $color-violet; }
   #W-circle  { fill: $color-pink; }
   #NW-circle { fill: $color-red; }
+
+  .light-percent {
+    $font-size: 120px;
+    $line-height: 1;
+    $text-height: $line-height * $font-size;
+
+    $this-width: $width / 2;
+    $this-height: $text-height;
+    margin-left: ($width / 2) - ($this-width * 0.5);
+    margin-top: ($height / 2) - ($this-height * 0.6);
+    width: $this-width;
+    height: $text-height;
+    font-size: $font-size;
+    line-height: $line-height;
+    font-family: monaco;
+    text-align: center;
+    color: #ccc;
+    position: absolute;
+    display: block;
+    z-index: 100000;
+  }
 }

@@ -1,0 +1,11 @@
+.wind-page {
+  $width: 600px;
+  $height: 600px;
+  @include center($width, $height);
+
+  .wind-title {
+    font-family: $font-family;
+    font-size: 80px;
+    text-align: center;
+  }
+}

@@ -13,4 +13,5 @@
   z-index: -1;
   background-color: black;
   -webkit-mask: url('/svg/masks/dots.svg');
+  animation: slide 0.6s infinite linear;
 }

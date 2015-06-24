@@ -12,3 +12,23 @@
     @include filter(blur(0));
   }
 }
+
+@include keyframes(rotate) {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@include keyframes(slide) {
+  from {
+    top: -12px;
+    left: -12px;
+  }
+  to {
+    left: 0px;
+    top: 0px;
+  }
+}

@@ -2,6 +2,7 @@
   (:require [svg-thing.component.temperature :as temp]
             [svg-thing.component.light :as light]
             [svg-thing.component.main :as main]
+            [svg-thing.component.wind :as wind]
 
             [dommy.core :as dommy :refer-macros [sel1]]
 
@@ -22,7 +23,9 @@
   { :light { :current 0
              :range { :max 100 :min 0 }}
     :temp { :current 0
-            :range { :max 60 :min 10 }}}))
+            :range { :max 60 :min 10 }}
+    :noise { :current 0
+             :range { :max 100 :min 0 }}}))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -44,6 +47,10 @@
 
 (secretary/defroute "/light" []
   (session/put! :current-page (fn [] [light/page (@app-state :light)]))
+  (render))
+
+(secretary/defroute "/wind" []
+  (session/put! :current-page (fn [] [wind/page (@app-state :noise)]))
   (render))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

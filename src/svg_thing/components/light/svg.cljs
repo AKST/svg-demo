@@ -7,7 +7,8 @@
 
 
 (def ^{:private true} consts
-  { :start { :W-circle  { :cx 25   :cy 50   }
+  { :sizes { :min 25 :max 40 }
+    :start { :W-circle  { :cx 25   :cy 50   }
              :NW-circle { :cx 32.3 :cy 32.3 }
              :N-circle  { :cx 50   :cy 25   }
              :NE-circle { :cx 67.7 :cy 32.3 }
@@ -30,27 +31,29 @@
   "The colour curve for the background"
   (let [light (light-props :light)
         circle   (get-in consts [:start circle-id])
-        current  (light :current)
+        sizes    (consts :sizes)
         darkest  (get-in light [:range :min])
         lightest (get-in light [:range :max])
+
+        current  (max (min (light :current) lightest) darkest)
 
         goes-down  (< (circle :cy) 50)
         goes-right (< (circle :cx) 50)
 
+        r-plot (math/plot [lightest (sizes :min)] [darkest (sizes :max)])
         cy-plot (math/plot [lightest (circle :cy)] [darkest 50] )
-
         cx-plot (math/plot [lightest (circle :cx)] [darkest 50] )]
-    (print (cx-plot current) circle light-props)
-    { :cy (percent (cy-plot current))
+    { :r  (percent (r-plot current))
+      :cy (percent (cy-plot current))
       :cx (percent (cx-plot current)) }))
 
 
 (defn- render-multiply [this]
   [:div.light-svg-outer
-   [:svg.light-svg
+   [:span.light-percent (percent (get-in this [:light :current]))]
+   [:svg.light-svg { :viewBox "0 0 100 100" :width 100 :height 100 }
     (for [[id { start-x :cx start-y :cy }] (consts :start)]
-      [:circle (merge { :id id :r (percent 25) :key id }
-                      (position-curve this id))])]])
+      [:circle (merge { :id id :key id } (position-curve this id))])]])
 
 
 (def multiply

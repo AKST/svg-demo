@@ -34,6 +34,8 @@
     $heading-occupied-height: floor($line-height * $heading-font-size) + $vertical-spacing;
     $value-occupied-height: floor($line-height * $value-font-size) + $vertical-spacing;
 
+    text-shadow: #aaa 2px 2px, #aaa 4px 4px;
+
     .temp-heading {
       line-height: $line-height;
       font-size: $heading-font-size;
@@ -45,6 +47,7 @@
       margin-top: $vertical-spacing / 3;
       display: block;
       text-align: center;
+
     }
 
     .temp-value {
