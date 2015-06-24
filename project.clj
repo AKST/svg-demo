@@ -8,6 +8,7 @@
                  [prismatic/dommy "1.1.0"]
                  [secretary "1.2.3"]
                  [reagent "0.5.0"]
+                 [reagent-utils "0.1.5"]
 
                  [org.clojure/clojurescript "0.0-3211"]
                  [org.clojure/core.async "0.1.346.0-17112a-alpha"]]
@@ -22,12 +23,12 @@
   :source-paths ["src"]
 
   :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"]
-  
+
   :cljsbuild {
     :builds [{:id "dev"
               :source-paths ["src"]
 
-              :figwheel { :on-jsload "svg-thing.core/main" }
+              :figwheel { :on-jsload "svg-thing.core/mount-app" }
 
               :compiler {:main svg-thing.core
                          :asset-path "js/compiled/out"

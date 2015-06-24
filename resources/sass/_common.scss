@@ -1,11 +1,16 @@
+.background-wrapper {
+  //-webkit-filter: url('/svg/filters.svg#blur3');
+}
 .background {
   transition: ease-in-out $animation-time background;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  top: 0;
-  height: 100vh;
-  width: 100vw;
+  right: -10vw;
+  left: -10vw;
+  bottom: -10vh;
+  top: -10vh;
+  height: 120vh;
+  width: 120vw;
   position: fixed;
   z-index: -1;
+  background-color: black;
+  -webkit-mask: url('/svg/masks/dots.svg');
 }

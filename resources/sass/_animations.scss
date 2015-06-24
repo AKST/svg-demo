@@ -1,0 +1,14 @@
+@include keyframes(fadeInBlur) {
+  0% {
+    @include filter(blur(5px));
+  }
+  75% {
+    @include filter(blur(1px));
+  }
+  87% {
+    @include filter(blur(1.5px));
+  }
+  100% {
+    @include filter(blur(0));
+  }
+}

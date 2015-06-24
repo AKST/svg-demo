@@ -1,0 +1,105 @@
+.main-page {
+  $height: 400px;
+  $width: 600px;
+
+  @include center($height, $width);
+
+  .main-title, .main-links {
+    font-family: $font-family;
+  }
+
+  .blur-wrapper {
+    -webkit-filter: url('/svg/filters.svg#vertical-blur');
+  }
+  .mask-wrapper {
+    //-webkit-mask: url('/svg/masks/dots.svg');
+  }
+  .main-title {
+    @include user-select(none);
+
+    font-size: 200px;
+    font-weight: 900;
+    text-align: center;
+    line-height: 1;
+
+    @include filter(url('/svg/filters.svg#blur1') url('/svg/filters.svg#offset'));
+
+    color: rgb(246,116,93);
+    text-anchor: middle;
+    margin-bottom: 40px;
+  }
+
+  .main-links {
+    padding-left: 0;
+  }
+  .main-link-it {
+    display: inline-block;
+    list-style-type: none;
+  }
+  .main-link {
+    text-decoration: none;
+  }
+
+  .main-icon {
+    $icon-width: $width / 3;
+
+    $h-margin: $icon-width * 0.07;
+    $inner-icon-width: $icon-width - $h-margin;
+    height: $inner-icon-width;
+    width: $inner-icon-width;
+    margin: 0 ($h-margin / 2);
+    border-radius: 100%;
+    background-color: black;
+    transition: ease-in-out $animation-time-2 all;
+
+
+    animation: fadeInBlur 2s;
+    animation-iteration-count: 1;
+
+    .main-icon-label {
+      display: block;
+      text-align: center;
+      margin-top: 5px;
+      width: $inner-icon-width;
+      font-family: $font-family;
+      font-size: 16px;
+    }
+
+    .main-icon-icon {
+      //-webkit-filter: url('/svg/filters.svg#blur1') url('/svg/filters.svg#offset');
+      padding-top: $inner-icon-width * 0.1;
+      max-height: $inner-icon-width * 0.6;
+      width: $inner-icon-width * 0.7;
+      margin: 0 ($inner-icon-width * 0.15);
+    }
+
+    &.temperature-icon {
+      &:hover {
+        background-color: $color-red;
+      }
+      color: white;
+      svg * {
+        fill: white;
+      }
+    }
+    &.light-icon {
+      &:hover {
+        background-color: $color-yellow;
+      }
+      color: white;
+      svg * {
+        fill: white;
+      }
+    }
+    &.wind-icon {
+      &:hover {
+        background-color: $color-blue;
+      }
+      color: white;
+      svg * {
+        fill: white;
+      }
+    }
+  }
+
+}

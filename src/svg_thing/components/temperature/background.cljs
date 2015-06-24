@@ -27,17 +27,19 @@
 
 (defn- adjust-colour [this]
   "Moves svg components to represent the temperature"
-  (let [bg (reagent/dom-node this)
+  (let [bg (sel1 (reagent/dom-node this) :.background)
         temperature ((reagent/props this) :current)
         bg-colour ((colour-curve this) temperature)]
     (dommy/set-style! bg :background-color bg-colour)))
 
 
 (defn- render [this]
-  [:div.background])
+  [:div.background-wrapper
+    [:div.background]])
 
 
 (def background
   (reagent/create-class
     { :component-did-update adjust-colour
+      :component-did-mount adjust-colour
       :reagent-render render }))

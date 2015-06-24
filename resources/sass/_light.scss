@@ -1,0 +1,46 @@
+.light-page {
+  $width: 600px;
+  $height: 600px;
+  @include center($width, $height);
+
+  $title-size: $height / 12;
+
+  .light-title {
+    font-family: $font-family;
+    font-size: $title-size;
+    text-align: center;
+    line-height: 1;
+    margin: 0;
+  }
+
+  $svg-margin: $title-size / 3;
+  $svg-dim: $height - ($title-size + $svg-margin);
+
+  .light-svg-outer {
+    margin-top: $svg-margin;
+    margin-left: $svg-margin;
+    margin-right: $svg-margin;
+    height: $svg-dim;
+  }
+
+  .light-svg {
+    margin: 0 auto;
+    display: block;
+    height: $svg-dim;
+    width: $svg-dim;
+  }
+
+  .light-svg circle {
+    mix-blend-mode: multiply;
+    transition: ease-in-out $animation-time all;
+  }
+
+  #N-circle  { fill: $color-orange; }
+  #NE-circle { fill: $color-yellow; }
+  #E-circle  { fill: $color-green; }
+  #SE-circle { fill: $color-aqua; }
+  #S-circle  { fill: $color-blue; }
+  #SW-circle { fill: $color-violet; }
+  #W-circle  { fill: $color-pink; }
+  #NW-circle { fill: $color-red; }
+}

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <defs>
+    <filter id="blur1" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" />
+    </filter>
+    <filter id="blur2" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.5" />
+    </filter>
+    <filter id="blur3" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="0.8" />
+    </filter>
+
+    <filter id="vertical-blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3,0.8" />
+    </filter>
+
+    <filter id="offset" x="0" y="0" width="200%" height="200%">
+
+      <feOffset in="SourceGraphic" result="1o" dx="2" dy="2" />
+      <feColorMatrix in="1o" result="1h" type="hueRotate" values="-45"/>
+      <feBlend in="SourceGraphic" in2="1h" mode="multiply" result="1b"/>
+
+      <feOffset in="1h" result="2o" dx="2" dy="2" />
+      <feColorMatrix in="2o" result="2h" type="hueRotate" values="-45"/>
+      <feBlend in="1b" in2="2h" mode="multiply" result="2b"/>
+
+      <feOffset in="2h" result="3o" dx="2" dy="2" />
+      <feColorMatrix in="3o" result="3h" type="hueRotate" values="-45"/>
+      <feBlend in="2b" in2="3h" mode="multiply" result="3b"/>
+
+      <feOffset in="3h" result="4o" dx="2" dy="2" />
+      <feColorMatrix in="4o" result="4h" type="hueRotate" values="-45"/>
+      <feBlend in="3b" in2="4h" mode="multiply" result="4b"/>
+
+      <feOffset in="4h" result="5o" dx="2" dy="2" />
+      <feColorMatrix in="5o" result="5h" type="hueRotate" values="-45"/>
+      <feBlend in="4b" in2="5h" mode="multiply" result="5b"/>
+
+      <feOffset in="5h" result="6o" dx="2" dy="2" />
+      <feColorMatrix in="6o" result="6h" type="hueRotate" values="-45"/>
+      <feBlend in="5b" in2="6h" mode="multiply" result="6b"/>
+
+      <feOffset in="6h" result="7o" dx="2" dy="2" />
+      <feColorMatrix in="7o" result="7h" type="hueRotate" values="-45"/>
+      <feBlend in="6b" in2="7h" mode="multiply" result="7b"/>
+
+      <feOffset in="7h" result="8o" dx="2" dy="2" />
+      <feColorMatrix in="8o" result="8h" type="hueRotate" values="-45"/>
+      <feBlend in="7b" in2="8h" mode="multiply" result="8b"/>
+
+    </filter>
+  </defs>
+</svg>

@@ -19,7 +19,7 @@
    * contains temperature value and label saying temperature
    */
   .temp-hud {
-    font-family: Lato, sans-serif;
+    font-family: $font-family;
     top: $-temp-height * 0.05;
     position: absolute;
     height: $-temp-height;
@@ -28,7 +28,7 @@
 
     $line-height: 1.2;
     $heading-font-size: 70px;
-    $value-font-size: 130px;
+    $value-font-size: 150px;
     $vertical-spacing: $-temp-height * 0.2;
 
     $heading-occupied-height: floor($line-height * $heading-font-size) + $vertical-spacing;
@@ -48,7 +48,7 @@
     }
 
     .temp-value {
-      font-weight: 100;
+      font-weight: 300;
       font-style: normal;
       line-height: $line-height;
       font-size: $value-font-size;

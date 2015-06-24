@@ -8,3 +8,34 @@
   margin: calc((100vh - #{$height}) / 2) calc((100vw - #{$width}) / 2);
 
 }
+
+@mixin user-select($option) {
+  -webkit-touch-callout: $option;
+  -webkit-user-select: $option;
+  -khtml-user-select: $option;
+  -moz-user-select: $option;
+  -ms-user-select: $option;
+  user-select: $option;
+}
+
+@mixin filter($option) {
+  -webkit-filter: $option;
+  -moz-filter: $option;
+  filter: $option;
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
