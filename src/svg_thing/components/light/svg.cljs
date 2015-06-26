@@ -59,7 +59,8 @@
 
 
 (defn- rotation [props]
-  (str "rotate(" (get-current (props :light)) "deg)"))
+  (let [deg (* (get-current (props :light)) 3.6)]
+    (str "rotate(" deg "deg)")))
 
 
 (defn- render-multiply [this]

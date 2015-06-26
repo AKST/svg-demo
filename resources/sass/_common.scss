@@ -1,5 +1,5 @@
 .background-wrapper {
-  //-webkit-filter: url('/svg/filters.svg#blur3');
+  -webkit-filter: url('/svg/filters.svg#blur3');
 }
 .background {
   transition: ease-in-out $animation-time background;
