@@ -3,6 +3,7 @@
             [svg-thing.component.light :as light]
             [svg-thing.component.main :as main]
             [svg-thing.component.wind :as wind]
+            [svg-thing.http :as http]
 
             [dommy.core :as dommy :refer-macros [sel1]]
 
@@ -21,11 +22,22 @@
 
 (defonce app-state (ratom/atom
   { :light { :current 0
+             :explict nil
              :range { :max 100 :min 0 }}
     :temp { :current 0
+            :explict nil
             :range { :max 60 :min 10 }}
     :noise { :current 0
+             :explict nil
              :range { :max 100 :min 0 }}}))
+
+(defn convert [object]
+  (let [keys (.keys js/Object object)]
+    (println keys)
+    (reduce (fn [obj key] 
+              (assoc obj (keyword key) object))
+            {}
+            keys)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -76,7 +88,19 @@
      (secretary/dispatch! (.-token event))))
   (.setEnabled true))
 
+(defn round-decimal [number decimal-count]
+  (js/parseFloat (.toFixed number decimal-count) 10))
+
+(http/socket "ws://localhost:1234" (fn [evt]
+  (let [data (js->clj (.parse js/JSON (.-data evt)) :keywordize-keys true)]
+    (swap! app-state assoc-in [:light :current] 
+           (.round js/Math (* 150 (get-in data [:ambience :light]))))
+    (swap! app-state assoc-in [:temp :current] 
+           (.round js/Math (get-in data [:climate :temperature])))
+    )))
+
 ;; render application
 (mount-app)
+
 
 

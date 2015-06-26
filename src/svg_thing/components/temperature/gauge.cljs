@@ -41,9 +41,10 @@
   (let [dom (reagent/dom-node this)
         dot (sel1 dom :#temperature-top)
         bar (sel1 dom :#temperature-mid)
+        props (reagent/props this)
 
-        temperature ((reagent/props this) :current)
-        y-position (math/plot-range ((reagent/props this) :range) ((consts :svg-pt) :range))
+        temperature (or (props :explict) (props :current))
+        y-position (math/plot-range (props :range) ((consts :svg-pt) :range))
         ;; height cannot go below zero
         bar-height (max 0 (- (get-in consts [:svg-pt :range :min]) (y-position temperature)))]
 

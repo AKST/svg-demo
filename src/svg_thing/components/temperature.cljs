@@ -18,6 +18,6 @@
    [:div.temp-hud
     [:span.temp-heading "Temperature"]
     [:br]
-    [:span.temp-value (temp-data :current) "°"]]
+    [:span.temp-value (or (temp-data :explict) (temp-data :current)) "°"]]
    [gauge (assoc temp-data :svg-url "/svg/tempature.svg")]])
 

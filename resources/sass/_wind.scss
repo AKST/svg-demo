@@ -3,9 +3,20 @@
   $height: 600px;
   @include center($width, $height);
 
+  $title-font-size: 0;
+  $title-line-height: 1;
+  $title-height: $title-line-height * $title-font-size;
+  $title-margin: $title-height * 0.4;
+  $title-v-space: $title-margin + $title-height;
+
   .wind-title {
     font-family: $font-family;
-    font-size: 80px;
+    line-height: $title-line-height;
+    font-size: $title-font-size;
     text-align: center;
+    margin-bottom: $title-margin;
+  }
+  .wind-tree-outer, .wind-tree {
+    max-height: $height - $title-v-space;
   }
 }

@@ -28,7 +28,8 @@
 (defn- adjust-colour [this]
   "Moves svg components to represent the temperature"
   (let [bg (sel1 (reagent/dom-node this) :.background)
-        temperature ((reagent/props this) :current)
+        props (reagent/props this)
+        temperature (or (props :explict) (props :current))
         bg-colour ((colour-curve this) temperature)]
     (dommy/set-style! bg :background-color bg-colour)))
 

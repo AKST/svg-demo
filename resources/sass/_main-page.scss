@@ -9,7 +9,7 @@
   }
 
   .blur-wrapper {
-    -webkit-filter: url('/svg/filters.svg#vertical-blur');
+    //-webkit-filter: url('/svg/filters.svg#vertical-blur');
   }
   .mask-wrapper {
     //-webkit-mask: url('/svg/masks/dots.svg');
@@ -62,12 +62,13 @@
       margin-top: 5px;
       width: $inner-icon-width;
       font-family: $font-family;
-      font-size: 16px;
+      //font-size: 16px;
+      font-size: 0;
     }
 
     .main-icon-icon {
       //-webkit-filter: url('/svg/filters.svg#blur1') url('/svg/filters.svg#offset');
-      padding-top: $inner-icon-width * 0.1;
+      padding: ($inner-icon-width * 0.19) 0;
       max-height: $inner-icon-width * 0.6;
       width: $inner-icon-width * 0.7;
       margin: 0 ($inner-icon-width * 0.15);

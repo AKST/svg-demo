@@ -25,8 +25,8 @@
     [:li.main-link-it
      [:a.main-link { :href "#/wind" }
        [icons/glpyh-iconset
-        { :icon "light-bulb"
-          :label "Wind"
+        { :icon "arrow-move"
+          :label "Motion"
           :className "wind-icon" }]]]]])
 
 

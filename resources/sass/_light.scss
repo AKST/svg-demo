@@ -22,13 +22,17 @@
     margin-right: $svg-margin;
     height: $svg-dim;
   }
-
-  .light-svg {
-    height: inherit;
-    width: inherit;
+  .light-rotator {
+    width: $svg-dim;
+    height: $svg-dim;
+    transition: ease-in-out $animation-time all;
+  }
+  .light-sv {
+    height: $svg-dim;
+    width: $svg-dim;
     margin: 0 auto;
     display: block;
-    animation: rotate (60s * 8) infinite linear;
+    animation: rotate (60s * 3) infinite linear;
   }
 
   .light-svg circle {

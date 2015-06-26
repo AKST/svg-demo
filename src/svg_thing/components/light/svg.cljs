@@ -7,7 +7,7 @@
 
 
 (def ^{:private true} consts
-  { :sizes { :min 25 :max 40 }
+  { :sizes { :min 25 :max 50 }
     :start { :W-circle  { :cx 25   :cy 50   }
              :NW-circle { :cx 32.3 :cy 32.3 }
              :N-circle  { :cx 50   :cy 25   }
@@ -27,6 +27,16 @@
   (str num "%"))
 
 
+(defn- between [val smallest largest]
+  (max (min val largest) smallest))
+
+
+(defn- get-current [light]
+  (let [darkest  (get-in light [:range :min])
+        lightest (get-in light [:range :max])]
+   (between (or (light :explict) (light :current)) darkest lightest)))
+
+
 (defn- position-curve [light-props circle-id]
   "The colour curve for the background"
   (let [light (light-props :light)
@@ -35,7 +45,7 @@
         darkest  (get-in light [:range :min])
         lightest (get-in light [:range :max])
 
-        current  (max (min (light :current) lightest) darkest)
+        current  (get-current light)
 
         goes-down  (< (circle :cy) 50)
         goes-right (< (circle :cx) 50)
@@ -48,12 +58,17 @@
       :cx (percent (cx-plot current)) }))
 
 
+(defn- rotation [props]
+  (str "rotate(" (get-current (props :light)) "deg)"))
+
+
 (defn- render-multiply [this]
-  [:div.light-svg-outer
-   [:span.light-percent (percent (get-in this [:light :current]))]
-   [:svg.light-svg { :viewBox "0 0 100 100" :width 100 :height 100 }
+  [:div.light-svg-outer 
+   [:span.light-percent (percent (get-current (this :light)))]
+   [:div.light-rotator  { :style { :transform (rotation this) } }
+   [:svg.light-svg { :viewBox "0 0 100 100" :width 600 :height 600 }
     (for [[id { start-x :cx start-y :cy }] (consts :start)]
-      [:circle (merge { :id id :key id } (position-curve this id))])]])
+      [:circle (merge { :id id :key id } (position-curve this id))])]]])
 
 
 (def multiply

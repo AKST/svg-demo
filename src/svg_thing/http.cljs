@@ -21,4 +21,7 @@
       (async/close! result)))
     result))
 
+(defn socket [url on-message]
+  (let [socket (js/WebSocket. url)]
+    (aset socket "onmessage" on-message)))
 
