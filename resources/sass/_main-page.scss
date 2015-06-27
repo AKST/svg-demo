@@ -30,7 +30,7 @@
   }
 
   $icon-number: 3;
-  $icon-width: $width / 4;
+  $icon-width: $width / 5;
 
   $h-margin: $icon-width * 0.25;
   $inner-icon-width: $icon-width - $h-margin;
@@ -40,6 +40,7 @@
     width: $icon-width * $icon-number;
     margin-left: auto;
     margin-right: auto;
+    -webkit-margin-before: 40px;
   }
   .main-link-it {
     display: inline-block;
